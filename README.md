@@ -44,9 +44,9 @@
 聊到ui自动化框架,绕不开`selenium`, `selenium` 基于`webdriver` 提供编程式自动化操作体验,同时也存在一些问题。运行缓慢、稳定性差、`driver`版本众多
 需与浏览器版本适配，造成了使用门槛过高。
 
-新型自动化势力 `cypress` 、`testcafe` 等采用e2e方案实现的自动化框架。
+而 `cypress` 、`testcafe` 等采用`e2e`方案实现的自动化框架。
 这些框架运行速度更快、脚本设计更简洁、社区更为活跃，但使用方式仍以脚本开发为主
-提供的录制功能，可用性极差，需要一定的编程经验。
+提供的录制功能，易用性较差，需要一定的编程经验。
 
 与之相对 `YinTao` 将提供更轻松、灵活的自动化体验，`YinTao` 内部继承了初代`YinTao-driver` 中的智能录制模式,轻松录制生成复杂脚本。通过融合`testcafe` + `cypress` 执行逻辑构建 [YinTao-core](https://coding.jd.com/YinTao/YinTao-core/) 核心执行引擎,提供多终端稳定运行能力。
 
