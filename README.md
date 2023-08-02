@@ -60,7 +60,9 @@
  我们提供最简洁的安装方式,请参阅[安装文档](https://yintao.jd.com/guide/introduce/download.html)
 
 ### <span id="run">运行</span>
-双击icon运行![YinTao](https://yintao.jd.com/icon.png)
+双击`icon`<img alt="NPM Version" src="https://yintao.jd.com/icon.png" style="width:25px;vertical-align: bottom;" />运行
+
+
 
 ## <span id="doc">使用文档</span>
 我们知道好的工具需要配套通俗易懂的用户文档。
