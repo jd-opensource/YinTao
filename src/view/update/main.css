@@ -1,0 +1,23 @@
+@charset "utf-8";
+.info{
+    margin : 0;
+    padding-top: 10px;
+    color: brown;
+}
+
+.button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.progress{
+<<<<<<< HEAD
+    margin: 45px 10px 0 10px;
+=======
+    margin: 10px 10px 0 10px;
+>>>>>>> 85b4e57 (自动更新)
+}
+.version :last-child{
+    text-align: left;
+    padding: 0 15px 0 20px;
+}

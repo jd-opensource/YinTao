@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="arouse()">唤醒</button>
+    <button onclick="run()">执行</button>
+    <button onclick="live()">录制</button>
+    <button onclick="apiLive()">接口录制</button>
+    <button onclick="browsers()">获取可用浏览器列表</button>
+    <button onclick="ping()">ping</button>
+    <button onclick="exit()">exit</button>
+    <script>
+        let ws = new WebSocket('ws://127.0.0.1:8888')
+
+        async function arouse() {
+            ws = new WebSocket('ws://127.0.0.1:8888')
+            const started = await new Promise((resolve, reject) => {
+                ws.onopen = () => {
+                    resolve(true)
+                }
+                ws.addEventListener('error', () => {
+                    resolve(false)
+                })
+            })
+            console.log('started:', started)
+
+            if (!started && await __installed() === false) {
+                console.log('未安装引擎,请手动安装cherry引擎')
+                throw new Error('Not installed')
+            }
+        }
+
+        function __installed() {
+            let urlProtocol = "cherry-next://open"
+            return new Promise((res) => {
+                console.log('urlProtocol')
+                let target = document.createElement('input')
+                target.style.width = '0'
+                target.style.height = '0'
+                target.style.position = 'fixed'
+                target.style.top = '0'
+                target.style.left = '0'
+                document.body.appendChild(target)
+                target.focus();
+
+                var handler = this._registerEvent(target, "blur", onBlur);
+
+                function onBlur() {
+                    res(true)
+                    handler.remove()
+                    clearTimeout(timeout)
+                    document.body.removeChild(target)
+                };
+                //will trigger onblur
+                window.location.href = urlProtocol
+                // Note: timeout could vary as per the browser version, have a higher value
+                var timeout = setTimeout(function () {
+                    res(false)
+                    handler.remove()
+                    document.body.removeChild(target)
+                }, 1000);
+            })
+        }
+
+        function _registerEvent(target, eventType, cb) {
+            if (target.addEventListener) {
+                target.addEventListener(eventType, cb);
+                return {
+                    remove: function () {
+                        target.removeEventListener(eventType, cb);
+                    }
+                };
+            } else {
+                target.attachEvent(eventType, cb);
+                return {
+                    remove: function () {
+                        target.detachEvent(eventType, cb);
+                    }
+                };
+            }
+        }
+
+        function live() {
+            console.log('run live')
+            ws.send(JSON.stringify({
+                api: 'live'
+            }))
+        }
+        ws.onmessage = function (msg) {
+            console.log('received api:', msg.data)
+        }
+        function apiLive() {
+            console.log('run apiLive')
+            ws.send(JSON.stringify({ api: 'apiLive', url: 'https://baidu.com/' }))
+        }
+
+        function run() {
+            ws.send(JSON.stringify({
+                api: 'run',
+                config: {
+                    script: `test('new test',async t =>{await t.navigateTo('https://baidu.com/');\nawait t.navigateTo('https://element.eleme.io/#/zh-CN/component/upload');\nawait t.click(\".el-message-box__btns > :nth-child(1) > span\")\nawait t.click(XPathSelector(\"(//*[string()='点击上传'])[2]\"))\nawait t.setFilesToUpload(XPathSelector(\"//*[@id=\\\"app\\\"]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]\"),[\"C:\\\\Users\\\\zhouyuan11\\\\Pictures\\\\meinv.png\"])\n})`
+                }
+            }))
+        }
+
+        function ping() {
+            ws.send(JSON.stringify({
+                api: 'ping'
+            }))
+        }
+
+        function exit() {
+            ws.send(JSON.stringify({
+                api: 'exit'
+            }))
+        }
+
+        function browsers() {
+            ws.send(JSON.stringify({
+                api: 'browsers'
+            }))
+        }
+    </script>
+</body>
+
+</html>

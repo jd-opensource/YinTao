@@ -1,0 +1,40 @@
+{
+  "name": "@cherry-jd/cherry-server",
+  "version": "1.1.2",
+  "description": "",
+  "main": "lib/main.js",
+  "bin": {
+    "cherry-server": "lib/main.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp > debug.log",
+    "fast": "gulp > debug.log && cp -rf lib ../../node_modules/@cherry-jd/cherry-server",
+    "build:linux": "yarn build && npx pkg . -t node16-linux-x64",
+    "publish": "npm publish --access public",
+    "release":"yarn pkg .",
+    "dev": "node lib/main.js"
+  },
+  "pkg": {
+    "scripts": [],
+    "assets": ["node_modules/@cherry-jd/core/lib/**"],
+    "outputPath": "dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@vercel/ncc": "^0.36.1",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "pkg": "^5.8.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@cherry-jd/core": "^2.0.8",
+    "endpoint-utils": "^1.0.2",
+    "express": "^4.17.2",
+    "express-formidable": "^1.2.0",
+    "proxy-chain": "^2.3.0"
+  }
+}

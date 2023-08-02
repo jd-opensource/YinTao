@@ -1,0 +1,11 @@
+version: 1.0.1
+files:
+  - url: cherry-1.0.1-mac.zip
+    sha512: 3Zrv4z8htw8pkhl+54VyJHGDUnN2l9eIKjNuf60LiJkBxSETqljoshrN6fjp3ZG/fswdWI0u9qs9D8Y1se3joA==
+    size: 350875106
+  - url: cherry-1.0.1.dmg
+    sha512: Q6VFmlkxxBUqzKHM9isa8y8Qs9NFbPbWV1oyGo+edJQemmz/ooP2TpliPco+dX3sxMYRFSA9GhzQnSMreLTQ3Q==
+    size: 353794024
+path: cherry-1.0.1-mac.zip
+sha512: 3Zrv4z8htw8pkhl+54VyJHGDUnN2l9eIKjNuf60LiJkBxSETqljoshrN6fjp3ZG/fswdWI0u9qs9D8Y1se3joA==
+releaseDate: '2022-03-22T08:53:28.479Z'

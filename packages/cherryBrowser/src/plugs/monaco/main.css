@@ -1,0 +1,9 @@
+#editor{
+  max-height: 600px;
+  border: 1px solid #ddd;
+}
+
+.vue-monaco{
+  height: 100%;
+  text-align: left;
+}

@@ -1,0 +1,129 @@
+{
+<<<<<<< HEAD
+  "name": "yintao",
+  "version": "2.0.6",
+  "description": "稳定性增强,优化dom.select 优化changeIframe可以通过url切换",
+=======
+  "name": "cherry",
+  "version": "1.0.0",
+  "description": "1.自动更新<br/>2.其他一些能力",
+>>>>>>> 85b4e57 (自动更新)
+  "main": "lib/main-process/main.js",
+  "scripts": {
+    "dev": "vite build &&  gulp > gulp_bulid.txt  && node ./src/main-process/utils/generate_injected.js && electron .",
+    "build": "vite build &&  gulp > gulp_bulid.txt",
+    "build-vue": "vue-tsc --noEmit && vite build",
+    "fast": "electron .",
+    "run": "electron .",
+    "test": "gulp test",
+    "pack": "electron-builder --dir",
+    "mac-arm": "yarn build && electron-builder --mac --arm64",
+    "dist": "yarn build && electron-builder",
+<<<<<<< HEAD
+    "build:linux": "yarn build && electron-builder --linux && rm -rf ./dist/linux-unpacked/resources/app/static/browsers && sh ./scripts/update_linux.sh",
+    "build:win": "gulp winEnv && yarn build && electron-builder --win --x64 && gulp envReduction",
+    "build:mac": "gulp macEnv && yarn build && electron-builder --mac --x64 && gulp envReduction",
+    "chrome": "set PLAYWRIGHT_BROWSERS_PATH=static/browsers&& npx cherry install chromium",
+    "chrome:mac": "PLAYWRIGHT_BROWSERS_PATH=./static/browsers npx cherry install chromium",
+    "chrome:mac-win": "PLAYWRIGHT_BROWSERS_PATH=./static/browsers npx cherry install chromium --platform=win64",
+    "chrome:win": "set PLAYWRIGHT_BROWSERS_PATH=static/browsers&& npx cherry install chromium",
+    "dist-all": "yarn build && electron-builder --linux --win --mac --x64"
+  },
+  "build": {
+    "files": [
+      "!envStore"
+    ],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://storage.jd.local/public-ns/cherry/"
+      }
+    ],
+    "appId": "YinTao",
+=======
+    "build:linux": "yarn build && electron-builder --linux",
+    "chrome": "PLAYWRIGHT_BROWSERS_PATH=./static/browsers npx cherry install chromium",
+    "dist-all":"yarn build && electron-builder --linux --win --mac --x64"
+  },
+  "build": {
+    "publish":[
+      {
+        "provider":"generic",
+        "url":"http://storage.jd.local/public-ns/cherry/"
+      }
+    ],
+    "appId": "cherry.next",
+>>>>>>> 85b4e57 (自动更新)
+    "asar": false,
+    "extraMetadata": {
+      "main": "lib/main-process/main.js"
+    },
+    "mac": {
+      "target": {
+        "target": "dmg",
+        "arch": [
+          "arm64",
+          "x64"
+        ]
+      },
+      "category": "ui.auto.YinTao.next"
+    },
+    "win": {
+      "target": {
+        "target": "NSIS",
+        "arch": [
+          "x64"
+        ]
+      },
+      "artifactName": "YinTaoSetup-${version}.${ext}"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@rollup/plugin-alias": "^3.1.9",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-inject": "^4.0.4",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@rollup/plugin-replace": "^3.0.1",
+    "@types/node": "^18.11.9",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "@vue/compiler-sfc": "^3.2.26",
+    "electron": "^16.0.5",
+    "electron-builder": "^22.14.13",
+    "electron-rebuild": "^3.2.9",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "jest": "^27.5.1",
+    "rollup": "^2.62.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "rollup-plugin-typescript2": "^0.31.1",
+    "rollup-plugin-vue": "^6.0.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.9.3",
+    "vite": "^2.7.9",
+    "vue": "^3.2.31",
+    "vue-tsc": "^0.30.1"
+  },
+  "dependencies": {
+    "@cherry-jd/cherry-browser": "^1.0.5",
+    "@cherry-jd/cherry-server": "^1.1.2",
+    "@cherry-jd/core": "^2.0.8",
+    "@cypress/unique-selector": "^0.4.4",
+    "axios": "^0.25.0",
+    "electron-updater": "^4.6.1",
+    "endpoint-utils": "^1.0.2",
+    "express": "^4.17.2",
+    "express-formidable": "^1.2.0",
+    "nanoid": "^3.1.30",
+    "playwright": "^1.31.1",
+    "proxy-chain": "^1.0.4",
+    "read-file-relative": "^1.2.0",
+    "vue-router": "4.0",
+    "ws": "^8.4.0"
+  }
+}

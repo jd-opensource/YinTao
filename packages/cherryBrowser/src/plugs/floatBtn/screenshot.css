@@ -1,0 +1,103 @@
+ /*全局变量*/
+ :root {
+    /*选框div的坐标及宽高 默认为0*/
+    --rect-width: 0px;/*右下x - 左上x*/
+    --rect-height:0px;/*右下y - 左上y*/
+    --rect-top:0px;/*左上y*/
+    --rect-left:0px;/*左上x*/
+
+    /*控制点的宽高及边框*/
+    --ctrl-point-width:4px;
+    --ctrl-point-height:4px;
+    --ctrl-point-border:1px;
+    --ctrl-point-real-height:calc(var(--ctrl-point-height) + calc(var(--ctrl-point-border) * 2));
+    --ctrl-point-real-width:calc(var(--ctrl-point-width) + calc(var(--ctrl-point-border) * 2));
+   }
+ .rect{
+    display:none;/*默认隐藏*/
+    width:var(--rect-width);
+    height:var(--rect-height);
+    border:1px solid rgb(0, 0, 0);
+    position:absolute;
+    top:var(--rect-top);
+    left:var(--rect-left);
+    cursor:move;
+    outline:rgb(220,220,220,0.7) solid 5000px;
+ }
+
+ .rect div{
+    height:var(--ctrl-point-height);
+    width:var(--ctrl-point-width);
+    border:var(--ctrl-point-border) solid;
+    border-color:gray;
+    background-color:rgb(255, 255, 255);
+    border-radius: 5px;
+ }
+
+ .rect .nw{
+    cursor:nw-resize;
+    position:absolute;
+    top:-3px;
+    left:-3px;
+ }
+
+.rect .n{
+    cursor:n-resize;
+    position:absolute;
+    top:calc(var(--ctrl-point-real-height)/2*-1);
+    left:calc(var(--rect-width)/2 - var(--ctrl-point-real-width)/2);
+ }
+ .rect .ne{
+    cursor:ne-resize;
+    position:absolute;
+    top: -3px;
+    right: -3px;
+ }
+ .rect .e{
+    cursor:e-resize;
+    position:absolute;
+    top:calc(var(--rect-height)/2 - var(--ctrl-point-real-height)/2);
+    left:calc(var(--rect-width) - var(--ctrl-point-real-width)/2);
+ }
+ .rect .se{
+    cursor:se-resize;
+    position:absolute;
+    bottom: -3px;
+    right: -3px;
+ }
+ .rect .s{
+    cursor:s-resize;
+    position:absolute;
+    top:calc(var(--rect-height) - var(--ctrl-point-real-height)/2);
+    left:calc(var(--rect-width)/2 - var(--ctrl-point-real-width)/2);
+ }
+ .rect .sw{
+    cursor:sw-resize;
+    position:absolute;
+    bottom: -3px;
+    left: -3px;
+ }
+ .rect .w{
+    cursor:w-resize;
+    position:absolute;
+    top:calc(var(--rect-height)/2 - var(--ctrl-point-real-height)/2);
+    left:calc(var(--ctrl-point-real-width)/2*-1);;
+ }
+
+
+ /* 工具栏 */
+ .shotTools{
+    position: absolute;
+    top:calc(var(--rect-height)  + var(--rect-top) + 10px);
+    left:calc(var(--rect-left) + var(--rect-width) - 50px);
+    background-color: #c1c1c1;
+ }
+
+ .shotTools > input {
+    background: none;
+    border: none;
+ }
+
+ .shotTools > input:hover {
+    background-color: #a1a0a0;
+ }

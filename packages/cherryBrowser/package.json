@@ -1,0 +1,27 @@
+{
+  "name": "@cherry-jd/cherry-browser",
+  "version": "1.0.5",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build && gulp",
+    "mac": "vite build && gulp && cp -rf lib ../../node_modules/@cherry-jd/cherry-browser",
+    "fast": "vite build && gulp > build_debug.txt && @powershell cp lib ../../node_modules/@cherry-jd/cherry-browser -Recurse -force",
+    "publish": "npm publish --access public"
+  },
+  "author": "",
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^16.0.5",
+    "element-plus": "^1.3.0-beta.1",
+    "monaco-editor": "^0.33.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "gulp": "^4.0.2",
+    "vite": "^2.9.1"
+  }
+}

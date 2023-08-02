@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="run()">run</button>
+    <button onclick="live()">live</button>
+    <button onclick="apiLive()">apiLive</button>
+    <button onclick="browsers()">browsers</button>
+    <button onclick="ping()">ping</button>
+    <button onclick="exit()">exit</button>
+    <script>
+        let ws = new WebSocket('ws://127.0.0.1:8888')
+        ws.onmessage = function (msg) {
+            console.log('received message:', msg.data)
+        }
+
+        function live() {
+            console.log('run live')
+            ws.send(JSON.stringify({ api: 'live' }))
+        }
+        function apiLive() {
+            console.log('run apiLive')
+            ws.send(JSON.stringify({ api: 'apiLive', url: 'https://baidu.com/' }))
+        }
+
+        function run() {
+            ws.send(JSON.stringify({
+                api: 'run', config: {
+                    script: `await page.to('https://baidu.com');await dom.set('京东','#kw');
+                    await sleep(1000);
+                    await dom.click('#su')`
+                }
+            }))
+        }
+
+        function ping() {
+            ws.send(JSON.stringify({ api: 'ping' }))
+        }
+
+        function exit() {
+            ws.send(JSON.stringify({ api: 'exit' }))
+        }
+
+        function browsers() {
+            ws.send(JSON.stringify({ api: 'browsers' }))
+        }
+    </script>
+</body>
+
+</html>
