@@ -1,0 +1,61 @@
+{
+  "build": {
+    "beforeDevCommand": "yarn dev",
+    "beforeBuildCommand": "yarn build",
+    "devPath": "http://localhost:5173",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "yintao",
+    "version": "0.0.0"
+  },
+  "tauri": {
+    "systemTray": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    },
+    "allowlist": {
+      "all": false,
+      "fs": {
+        "scope": ["$RESOURCE/*"]
+      },
+      "shell": {
+        "all": false,
+        "open": true
+      }
+    },
+    "bundle": {
+      "resources":["binaries/cherry-server-macos-aarch64-apple-darwin"],
+      "active": true,
+      "targets": "all",
+      "identifier": "com.yintao.jd",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "macOS": {
+        "entitlements": "./entitlements.plist",
+        "exceptionDomain": "",
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
+      }
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "yintao",
+        "width": 800,
+        "height": 600
+      }
+    ]
+  }
+}
