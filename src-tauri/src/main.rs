@@ -4,7 +4,7 @@
 use std::env;
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
-use tauri::{SystemTray};
+use tauri::SystemTray;
 use std::process::{Command, Child};
 use tauri::Manager;
 use tauri::{CustomMenuItem,SystemTrayMenu, SystemTrayMenuItem,SystemTrayEvent};
@@ -16,6 +16,13 @@ lazy_static! {
 
 fn main() {
     let app = tauri::Builder::default();
+
+    _ = match env::var("CARGO_CFG_TARGET_OS").as_deref() {
+        Ok("windows") => PathBuf::from("resources/windows"),
+        Ok("macos") => PathBuf::from("resources/macos"),
+        Ok("linux") => PathBuf::from("resources/linux"),
+        _ => panic!("Unsupported operating system"),
+    };
 
     tauri_plugin_deep_link::prepare("com.yintao.jd");
 
@@ -67,10 +74,18 @@ fn main() {
 
 }
 
-
+// 启动yintao服务
 fn start_yintao_server(app: tauri::AppHandle) -> Child {
+    let mut _path =  "binaries/yintao-server".to_string();
+    
+    if cfg!(target_os = "windows") {
+      let _win = ".exe".to_string();
+      _path += &_win;
+    }
+  
     let resource_path: PathBuf = app.path_resolver()
-    .resolve_resource("binaries/cherry-server-macos-aarch64-apple-darwin")
+
+    .resolve_resource(_path)
     .expect("failed to resolve resource");
 
     let child = Command::new(resource_path)

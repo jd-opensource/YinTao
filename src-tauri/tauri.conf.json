@@ -26,7 +26,7 @@
       }
     },
     "bundle": {
-      "resources":["binaries/cherry-server-macos-aarch64-apple-darwin"],
+      "resources":["binaries/yintao-server", "binaries/yintao-server.exe"],
       "active": true,
       "targets": "all",
       "identifier": "com.yintao.jd",
