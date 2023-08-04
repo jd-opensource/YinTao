@@ -17,13 +17,6 @@ lazy_static! {
 fn main() {
     let app = tauri::Builder::default();
 
-    _ = match env::var("CARGO_CFG_TARGET_OS").as_deref() {
-        Ok("windows") => PathBuf::from("resources/windows"),
-        Ok("macos") => PathBuf::from("resources/macos"),
-        Ok("linux") => PathBuf::from("resources/linux"),
-        _ => panic!("Unsupported operating system"),
-    };
-
     tauri_plugin_deep_link::prepare("com.yintao.jd");
 
     // 添加托盘
