@@ -1,6 +1,11 @@
 name: 'publish'
 
-on: pull_request
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "v2" ]
+  pull_request:
+    branches: [ "v2" ]
 
 jobs:
   create-release:
@@ -61,7 +66,7 @@ jobs:
         run: yarn install # change this to npm or pnpm depending on which one you use
       - uses: tauri-apps/tauri-action@v0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         with:
           releaseId: ${{ needs.create-release.outputs.release_id }}
 
