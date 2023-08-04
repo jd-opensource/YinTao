@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# src-tauri/binaries
+src-tauri/binaries
 
 package-lock.json
 node_modules
