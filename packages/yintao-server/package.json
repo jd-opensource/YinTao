@@ -15,6 +15,7 @@
     "release":"gulp > debug.log && yarn pkg .",
     "release:win":"gulp > debug.log && yarn pkg . -t node14-win-x64",
     "release:mac":"gulp > debug.log && yarn pkg . -t node14-macos-x64",
+    "release:auto":"gulp > debug.log && yarn pkg . -t host",
     "dev": "node lib/main.js"
   },
   "pkg": {
