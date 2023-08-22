@@ -25,13 +25,7 @@ export const startHttpControlServer = function( port: number ) {
 
   httpserver.get('/releaseLog', serviceImpl.releaseLog)
   httpserver.get('/browsers', serviceImpl.getBrowsers)
-<<<<<<< HEAD
   httpserver.get('/errorImage', serviceImpl.errorImage)
-=======
-  httpserver.post('/run', serviceImpl.runScript)
-  httpserver.post('/live', serviceImpl.liveScript)
-  httpserver.get('/releaseLog', serviceImpl.releaseLog)
->>>>>>> 85b4e57 (自动更新)
 }
 
 export default httpControlServer

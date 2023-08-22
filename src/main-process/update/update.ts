@@ -74,11 +74,7 @@ export function checkForUpdates(){
       webSecurity: false,
     }
   });
-<<<<<<< HEAD
   const site = `http://127.0.0.1:8777/#/update/`
-=======
-  const site = `http://127.0.0.1:1337/#/update/`
->>>>>>> 85b4e57 (自动更新)
 
   updateWin.loadURL(site).then(()=>{
     checkAndUpload();

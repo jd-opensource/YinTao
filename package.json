@@ -1,13 +1,7 @@
 {
-<<<<<<< HEAD
   "name": "yintao",
   "version": "2.0.6",
   "description": "稳定性增强,优化dom.select 优化changeIframe可以通过url切换",
-=======
-  "name": "cherry",
-  "version": "1.0.0",
-  "description": "1.自动更新<br/>2.其他一些能力",
->>>>>>> 85b4e57 (自动更新)
   "main": "lib/main-process/main.js",
   "scripts": {
     "dev": "vite build &&  gulp > gulp_bulid.txt  && node ./src/main-process/utils/generate_injected.js && electron .",
@@ -19,7 +13,6 @@
     "pack": "electron-builder --dir",
     "mac-arm": "yarn build && electron-builder --mac --arm64",
     "dist": "yarn build && electron-builder",
-<<<<<<< HEAD
     "build:linux": "yarn build && electron-builder --linux && rm -rf ./dist/linux-unpacked/resources/app/static/browsers && sh ./scripts/update_linux.sh",
     "build:win": "gulp winEnv && yarn build && electron-builder --win --x64 && gulp envReduction",
     "build:mac": "gulp macEnv && yarn build && electron-builder --mac --x64 && gulp envReduction",
@@ -40,20 +33,6 @@
       }
     ],
     "appId": "YinTao",
-=======
-    "build:linux": "yarn build && electron-builder --linux",
-    "chrome": "PLAYWRIGHT_BROWSERS_PATH=./static/browsers npx cherry install chromium",
-    "dist-all":"yarn build && electron-builder --linux --win --mac --x64"
-  },
-  "build": {
-    "publish":[
-      {
-        "provider":"generic",
-        "url":"http://storage.jd.local/public-ns/cherry/"
-      }
-    ],
-    "appId": "cherry.next",
->>>>>>> 85b4e57 (自动更新)
     "asar": false,
     "extraMetadata": {
       "main": "lib/main-process/main.js"

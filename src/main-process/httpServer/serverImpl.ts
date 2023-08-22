@@ -106,15 +106,4 @@ export class serviceImpl {
     })
     .catch(error => console.log('error:',error))
   }
-<<<<<<< HEAD
-=======
-  
-  static releaseLog(req,res,next):void{
-    const {version,description} = require('../../../package.json')
-    res.json({
-      version:version,
-      desc:description
-    })
-  }
->>>>>>> 85b4e57 (自动更新)
 }

@@ -57,14 +57,10 @@ const Update = defineComponent({
         this.$refs.checking.style.display = "none";
         this.$refs.least.style.display = "block";
       } else if (message === "downloadProgress"){
-<<<<<<< HEAD
         const progress = data.percent.toFixed(2) || 0;
         if (progress > this.downloadPercent){
           this.downloadPercent = progress
         }
-=======
-        this.downloadPercent = data.percent.toFixed(2) || 0;
->>>>>>> 85b4e57 (自动更新)
         this.$refs.checking.style.display = "none";
         this.$refs.checkUpload.style.display = "none";
       } else {
@@ -77,20 +73,12 @@ const Update = defineComponent({
       ipcRenderer.send("updateNow");
     },
     close() {
-<<<<<<< HEAD
       window.close()
-=======
-      ipcRenderer.send("close");
->>>>>>> 85b4e57 (自动更新)
     },
   },
   watch: {
     downloadPercent(nv,ov){
-<<<<<<< HEAD
       if (nv == 100.00){
-=======
-      if (nv == 100){
->>>>>>> 85b4e57 (自动更新)
         this.uploadMsg = "新版程序已下载完毕，是否立即升级？"
         this.$refs.checking.style.display = "none";
         this.$refs.checkUpload.style.display = "block";
