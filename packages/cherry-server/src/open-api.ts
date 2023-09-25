@@ -5,6 +5,7 @@ import { getValidPort } from './utils'
 import { RunConfig, RequestSource } from './typeApi'
 import DnsAnalysisServer from './dnsServer'
 import {live as _live,apiLive as _apiLive, run as _run} from '@cherry-jd/core/lib/cli/export'
+import ip from "ip"
 const {version} = require('../../package.json')
 var ChromiumPath 
 if (process.platform == 'win32') {
@@ -27,7 +28,7 @@ export async function run(config: RunConfig, callback?: Function): Promise<void>
     const remoteReport = config.remoteReport && config.remoteReport.result
     console.log('remoteReport',remoteReport)
     if (remoteReport !== void 0) {
-        callback ? callback({ msg: 'Please wait a moment, Results sent asynchronously!' }) : ''
+        callback ? callback({ msg: 'Please wait a moment, Results sent asynchronously!', serverIp: ip.address() }) : ''
     }
     const optins = {
         // 如果传递执行路径则使用传递的，没传递则尝试获取原生
