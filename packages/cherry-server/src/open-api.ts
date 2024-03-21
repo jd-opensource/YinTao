@@ -34,6 +34,7 @@ export async function run(config: RunConfig, callback?: Function): Promise<void>
         // 如果传递执行路径则使用传递的，没传递则尝试获取原生
         cookies:config.cookies || [],
         executablePath: config.executablePath,
+        audio: config.audio ,
         browser,
         headless:config.headless,
         remoteReport: config.remoteReport,

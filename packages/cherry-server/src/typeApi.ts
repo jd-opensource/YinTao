@@ -19,6 +19,13 @@ export enum RequestSource {ws,http}
  export type RunConfig = {
     requestSource: RequestSource // 来源区分http和ws请求
     browser?: string // 浏览器
+    audio?:{
+        url:string,
+        size?: {
+            width: number;
+            height: number;
+          }
+    }
     script: string 
     headless?: boolean
     executablePath?:string
