@@ -90,7 +90,7 @@
   },
   "dependencies": {
     "@cherry-jd/cherry-browser": "^1.0.5",
-    "@cherry-jd/cherry-server": "^1.1.2",
+    "@cherry-jd/cherry-server": "^1.1.7",
     "@cherry-jd/core": "^2.0.8",
     "@cypress/unique-selector": "^0.4.4",
     "axios": "^0.25.0",
