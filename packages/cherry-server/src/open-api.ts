@@ -6,13 +6,8 @@ import { RunConfig, RequestSource } from './typeApi'
 import DnsAnalysisServer from './dnsServer'
 import {live as _live,apiLive as _apiLive, run as _run} from '@cherry-jd/core/lib/cli/export'
 import ip from "ip"
+import { env } from 'process'
 const {version} = require('../../package.json')
-var ChromiumPath 
-if (process.platform == 'win32') {
-    ChromiumPath = './static/browsers/chromium-1001/chrome-win/chrome.exe'
-} else {
-    ChromiumPath = './static/browsers/chromium-1001/chrome-mac/Chromium.app/Contents/MacOS/Chromium'
-}
 
 /**
  * @method 执行脚本
@@ -30,6 +25,13 @@ export async function run(config: RunConfig, callback?: Function): Promise<void>
     if (remoteReport !== void 0) {
         callback ? callback({ msg: 'Please wait a moment, Results sent asynchronously!', serverIp: ip.address() }) : ''
     }
+
+    console.log("env:", env.loacl_cheryy_browser)
+    if ( env.loacl_cheryy_browser ) {
+        config.executablePath = env.loacl_cheryy_browser
+        console.log("use local browser:", config.executablePath)
+    }
+
     const optins = {
         // 如果传递执行路径则使用传递的，没传递则尝试获取原生
         cookies:config.cookies || [],

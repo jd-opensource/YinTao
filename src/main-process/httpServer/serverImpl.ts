@@ -25,25 +25,6 @@ function getCurrentTime() :string{
 }
 
 export class serviceImpl {
-  /**
-   * @method 运行脚本,需要先新建一个独立浏览器,这时候无法获取到url,但是需要先开浏览器,然后通过运行后续命令打开目标页面
-   */
-  static runScript(req, res, next) :void {
-    const args: RunConfig = req.body
-    if( req.headers['content-type'] !== 'application/json'){
-      return res.json({
-        code: 402,
-        msg:`Incorrect request type, miss type by: ${req.headers['content-type']}, just use application/json!`
-      })
-    }
-    console.log('runScript args:', JSON.stringify(args),"执行时间:",getCurrentTime())
-    args.requestSource = RequestSource.http
-    run(args,function(result){
-      result.storage = args.storage
-      res.json(result)
-    })
-  }
-
    /**
    * @method 录制脚本，关闭后返回脚本内容
    */

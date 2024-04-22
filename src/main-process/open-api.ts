@@ -12,6 +12,7 @@ import {live as el_live} from './live'
 import { pasteConfig } from './utils/pasteConfig'
 const {version} = require('../../package.json')
 import {run as _run} from '@cherry-jd/cherry-server'
+import { env } from 'process'
 
 var ChromiumPath 
 if(process.platform == 'win32') {
@@ -21,6 +22,9 @@ if(process.platform == 'win32') {
 }
 
 const executablePath = path.resolve(app.getAppPath(), ChromiumPath)
+
+// 使用环境变量传递本地浏览器位置
+env.loacl_cheryy_browser =  executablePath
 
 /**
  * @method 录制脚本
@@ -79,7 +83,11 @@ export async function live(config: LiveConfig, callback: Function): Promise<void
  * @param config 运行配置
  * @param callback 结果回调
  */
-export const run = _run
+export const run = async function run(config: RunConfig, callback?: Function): Promise<void> {
+    config.executablePath = config.executablePath || executablePath
+    console.log("executablePath:" , executablePath)
+    _run(config,callback)
+}
 
 /**
  * @method 远程上报运行结果

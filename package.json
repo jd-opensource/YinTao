@@ -1,6 +1,6 @@
 {
   "name": "yintao",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "稳定性增强,优化dom.select 优化changeIframe可以通过url切换",
   "main": "lib/main-process/main.js",
   "scripts": {
